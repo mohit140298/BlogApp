@@ -1,23 +1,12 @@
 const express = require('express')
 const router = express.Router()
+const blogController = require('../controller/blogController')
 
-router.get('/',(req,res)=>{
-    console.log('home page');
-})
-router.get('/create',(req,res)=>{
-    console.log('create blog page');
-})
-router.post('/post',(req,res)=>{
-    console.log('post blog');
-})
-router.get('/:id',(req,res)=>{
-    console.log('get blog');
-})
-router.put('/:id',(req,res)=>{
-    console.log('update blog');
-})
-router.delete('/:id',(req,res)=>{
-    console.log('delete blog');
-})
+router.get('/',blogController.fetchAllBlogs)
+router.post('/add',blogController.addBlog)
+router.get('/:id',blogController.fetchBlogById)
+router.put('/:id',blogController.updateBlog)
+router.delete('/:id',blogController.deleteBlog)
+
 
 module.exports = router
